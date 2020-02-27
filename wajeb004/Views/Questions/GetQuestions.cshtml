@@ -1,0 +1,70 @@
+﻿@model IEnumerable<wajeb004.Models.Question>
+<script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+@{
+    ViewBag.Title = "GetQuestions";
+}
+
+<div class="row">
+    <div class="col-md-2" style="padding:2px 2px 2px 2px;">
+
+        <ul id="myMenu" class="vertical-menu">
+            <li>@Html.ActionLink("Info", "Details", "EClasses", new { id = Session["eClassId"] }, null)</li>
+            <li class="active">@Html.ActionLink("Quizzes", "GetQuizzes", "Quizzs")</li>
+            <li>link1</li>
+            <li>Link2</li>
+        </ul>
+    </div>
+
+    <div class="col-md-10" style="border-left: solid">
+
+        <h2>GetQuestions</h2>
+        <div id="questionList">
+            <p>
+                @Ajax.ActionLink("Create New Question", "QuestionTypes", new AjaxOptions
+                    {
+                        UpdateTargetId = "questionList",
+                        InsertionMode = InsertionMode.Replace,
+                        HttpMethod = "GET"
+                    })
+
+            </p>
+            <table class="table">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.QuestionText)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.QuestionType)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.score)
+                    </th>
+                    
+                    <th></th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.QuestionText)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.QuestionType)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.score)
+                        </td>
+                       
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                            @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                        </td>
+                    </tr>
+                }
+
+            </table>
+        </div>
+    </div>
+</div>

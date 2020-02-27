@@ -1,0 +1,82 @@
+﻿@model wajeb004.Models.Question
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Question</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.QuestionText)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.QuestionText)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.QuestionType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.QuestionType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.score)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.score)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.isTrue)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.isTrue)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.opt1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.opt1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.opt2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.opt2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.opt3)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.opt3)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.opt4)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.opt4)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

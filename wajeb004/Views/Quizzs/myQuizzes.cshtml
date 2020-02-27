@@ -1,0 +1,30 @@
+﻿@model IEnumerable<wajeb004.Models.Quizz>
+
+<script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+
+
+<table class="table">
+   
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.ActionLink(item.QuizzName,"index","Questions")
+            </td>
+            
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+            </td>
+        </tr>
+    }
+
+</table>
+
+<div>
+    @Html.ActionLink("Create New Quizz", "create", "Quizzs")
+</div>
+
+
+

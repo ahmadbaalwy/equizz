@@ -1,0 +1,32 @@
+﻿@model IEnumerable<wajeb004.Models.Course>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a class="btn btn-default" href="@Url.Action("Create")">Create New Course &raquo;</a>
+
+</p>
+
+<table>
+    <div class="row">
+        @foreach (var item in Model)
+        {
+        <div class="col-md-3" style="border-radius: 25px; border: 1px solid black;">
+            <h2>@Html.DisplayFor(modelItem => item.courseName)</h2>
+            @foreach (var eclass in item.eclasses)
+            {
+                <p>@Html.ActionLink(eclass.EClassName, "Details", "EClasses", new { id = eclass.ID }, null)</p>
+            }
+            <p>
+            <p><a class="btn btn-default" href="@Url.Action("Create","EClasses",new { courseId = item.ID })">New Class &raquo;</a></p>
+          
+        </div>
+            <div class="col-md-1"></div>
+        }
+    </div>
+</table>
+

@@ -1,0 +1,49 @@
+﻿@model IEnumerable<wajeb004.Models.Quizz>
+
+    
+@{
+    ViewBag.Title = "GetQuizzes";
+}
+
+<div class="row">
+    <div class="col-md-2" style="padding:2px 2px 2px 2px;">
+
+        <ul id="myMenu" class="vertical-menu">
+            <li>@Html.ActionLink("Info", "Details", "EClasses", new { id = Session["eClassId"] }, null)</li>
+            <li class="active">@Html.ActionLink("Quizzes", "GetQuizzes", "Quizzs")</li>
+            <li>link1</li>
+            <li>Link2</li>
+        </ul>
+    </div>
+
+    <div class="col-md-10" style="border-left: solid">
+        <h2>GetQuizzes</h2>
+
+        <p>
+            @Html.ActionLink("Create New", "Create")
+        </p>
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.QuizzName)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.ActionLink(item.QuizzName, "GetQuestions", "Questions", new { quizzId = item.ID }, null)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+</div>

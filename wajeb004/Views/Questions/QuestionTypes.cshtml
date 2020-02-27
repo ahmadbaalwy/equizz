@@ -1,0 +1,22 @@
+﻿<h3>
+    Step 1 : Choose type of the new question please
+</h3>
+<div class="row">
+    <div class="col-md-3">
+        
+        <p>
+            To create a True of False Question please click the button below:
+        </p>
+        <p><a class="btn btn-default" href="@Url.Action("Create", new { QuestionType = "TF" })")">True/False Question &raquo;</a></p>
+    </div>
+    <div class="col-md-3">
+        
+        <p>To create a multi choice question, please click the button below:</p>
+        <p><a class="btn btn-default" href="@Url.Action("Create", new { QuestionType = "MCQ" })">Multi Choice Question &raquo;</a></p>
+    </div>
+    <div class="col-md-3">
+        
+        <p>To create an open answer question, pleae click the button below: </p>
+        <p><a class="btn btn-default" href="@Url.Action("Create", new { QuestionType = "OpenAnswer" })">Open Answer Question &raquo;</a></p>
+    </div>
+</div>
