@@ -69,6 +69,13 @@ namespace wajeb004.Controllers
             {
                 Course newCourse = db.Courses.Find(Convert.ToInt32(Session["courseId"]));
                 eClass.course = db.Courses.Find(Convert.ToInt32(Session["courseId"]));
+                string newCode;
+                do
+                {
+                    newCode = new ClassCode().GetNewCode();
+                } while (await CodeUsed(newCode));
+
+                eClass.code = newCode;
                 db.EClasses.Add(eClass);
 
                 await db.SaveChangesAsync();
@@ -142,6 +149,34 @@ namespace wajeb004.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        private async Task<Boolean> CodeUsed(string code)
+        {
+            var allEClasses = await db.EClasses.ToListAsync();
+            foreach (var item in allEClasses)
+            {
+                if (item.code == code)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public async Task<ActionResult> ChangeCode ()
+        {
+            var thisClass = db.EClasses.Find(Convert.ToInt32(Session["eClassId"]));
+            string newCode;
+            do
+            {
+                newCode = new ClassCode().GetNewCode();
+            } while (await CodeUsed(newCode));
+
+            thisClass.code = newCode;
+            db.Entry(thisClass).State = EntityState.Modified;
+            await db.SaveChangesAsync();
+            return RedirectToAction("Details",new { id = Convert.ToInt32(Session["eClassId"]) });
         }
     }
 }

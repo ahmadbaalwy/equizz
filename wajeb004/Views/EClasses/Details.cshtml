@@ -24,9 +24,12 @@
         <div>
             <hr />
 
-            <dl id="test" >
+            <dl id="test">
                 <dt>
                     Class Name: @Model.EClassName
+                </dt>
+                <dt>
+                    Class Code: @Model.code @Html.ActionLink("Change Code","ChangeCode")
                 </dt>
                 <dt>
                     Class Year: @Model.year

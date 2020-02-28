@@ -167,6 +167,7 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="ClassCode.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CoursesController.cs" />
     <Compile Include="Controllers\EClassesController.cs" />
@@ -217,6 +218,10 @@
     <Compile Include="Migrations\202002170329379_enum.cs" />
     <Compile Include="Migrations\202002170329379_enum.Designer.cs">
       <DependentUpon>202002170329379_enum.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202002280147167_class_code.cs" />
+    <Compile Include="Migrations\202002280147167_class_code.Designer.cs">
+      <DependentUpon>202002280147167_class_code.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -365,6 +370,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202002170329379_enum.resx">
       <DependentUpon>202002170329379_enum.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002280147167_class_code.resx">
+      <DependentUpon>202002280147167_class_code.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
