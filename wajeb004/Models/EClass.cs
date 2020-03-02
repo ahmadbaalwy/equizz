@@ -19,6 +19,8 @@ namespace wajeb004.Models
         public virtual Course course { get; set; }
 
         public virtual ICollection<Quizz> quizzs { get; set; }
+        public virtual ICollection<Student> students { get; set; }
+
 
     }
 }

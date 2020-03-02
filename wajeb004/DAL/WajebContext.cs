@@ -17,5 +17,8 @@ namespace wajeb004.DAL
         public System.Data.Entity.DbSet<wajeb004.Models.Quizz> Quizzs { get; set; }
 
         public DbSet<Question> Questions { get; set; }
+
+        public DbSet<Student> Students { get; set; }
+
     }
 }
