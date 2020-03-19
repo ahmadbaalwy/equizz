@@ -1,0 +1,48 @@
+﻿@model wajeb004.Models.EClass
+<style>
+</style>
+<script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+@{
+    ViewBag.Title = "Details";
+
+}
+
+<div class="row">
+    <div class="col-md-2" style="padding:2px 2px 2px 2px;">
+
+        <ul id="myMenu" class="vertical-menu">
+            <li class="active">@Html.ActionLink("Info","DetailsForStudents","EClasses",new { id = Session["eClassId"] },null)</li>
+            <li>@Html.ActionLink("Quizzes", "GetQuizzesForStudents", "Quizzs")</li>
+            <li>link1</li>
+            <li>Link2</li>
+        </ul>
+    </div>
+    <div class="col-md-10" style="border-left: solid">
+        <h4>@Model.course.courseName > @Model.EClassName</h4>
+
+
+        <div>
+            <hr />
+
+            <dl id="test">
+                <dt>
+                    Class Name: @Model.EClassName
+                </dt>
+                <dt>
+                    Class Code: @Model.code 
+                </dt>
+                <dt>
+                    Class Year: @Model.year
+                </dt>
+                <dt>
+                    Grade: @Model.grade
+                </dt>
+                <dt>
+                    Description: @Model.description
+                </dt>
+
+            </dl>
+        </div>
+
+    </div>
+</div>

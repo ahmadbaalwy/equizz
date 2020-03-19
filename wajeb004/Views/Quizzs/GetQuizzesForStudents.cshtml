@@ -1,0 +1,66 @@
+﻿@model IEnumerable<wajeb004.Models.Quizz>
+
+    
+@{
+    ViewBag.Title = "GetQuizzesForStudents";
+}
+
+<div class="row">
+    <div class="col-md-2" style="padding:2px 2px 2px 2px;">
+
+        <ul id="myMenu" class="vertical-menu">
+            <li>@Html.ActionLink("Info", "DetailsForStudents", "EClasses", new { id = Session["eClassId"] }, null)</li>
+            <li class="active">@Html.ActionLink("Quizzes", "GetQuizzesForStudents", "Quizzs")</li>
+            <li>link1</li>
+            <li>Link2</li>
+        </ul>
+    </div>
+
+    <div class="col-md-10" style="border-left: solid">
+        <h2>Quizzes of this course</h2>
+
+        
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.QuizzName)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(model => item.QuizzName)
+                    </td>
+                    <td>
+                        @{ bool snapshotExist = false; int snapshotId = 0;}
+                        @foreach (var snap in item.answerSnapshots)
+                        {
+                            if (snap.student.ID == Convert.ToInt32(Session["studentId"]))
+                            {
+                                snapshotExist = true;
+                                snapshotId = snap.ID;
+                            }
+                        }
+                        @if (!snapshotExist)
+                        {
+                            <a class="btn btn-default" href="@Url.Action("NewSnapShot","AnswersSnapshots",new { studentId = Convert.ToInt32(Session["studentId"]), quizzId=item.ID })">Start Quizz &raquo;</a>
+                        }
+                        @if (snapshotExist)
+                        {
+                            <a class="btn btn-default" href="@Url.Action("ResumeSnapShot","AnswersSnapshots",new { snapshotId = snapshotId})">Resume Quizz &raquo;</a>
+
+                        }
+
+                        @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+</div>

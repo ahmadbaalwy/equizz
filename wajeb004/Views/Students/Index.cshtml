@@ -19,7 +19,7 @@
                 <h3>@Html.DisplayFor(modelItem => item.eClass.EClassName)</h3>
 
                 <p>
-                <p><a class="btn btn-default" href="@Url.Action("Create","Students")">New Class &raquo;</a></p>
+                <p><a class="btn btn-default" href="@Url.Action("DetailsForStudents","EClasses",new { id = item.eClass.ID, studentId=item.ID })">Open This Class &raquo;</a></p>
 
             </div>
             <div class="col-md-1"></div>

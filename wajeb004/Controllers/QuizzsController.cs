@@ -20,19 +20,37 @@ namespace wajeb004.Controllers
         public async Task<ActionResult> GetQuizzes()
         {
            var allQuizzes = await db.Quizzs.ToListAsync();
-           var thisQuizzes = new List<Quizz>();
+           var selectedQuizzes = new List<Quizz>();
             int eClassId = Convert.ToInt32(Session["eClassId"]);
 
             foreach (var item in allQuizzes)
             {
                 if (item.eclass.ID == eClassId)
                 {
-                    thisQuizzes.Add(item);
+                    selectedQuizzes.Add(item);
                 }
             }
             
             
-            return View(thisQuizzes.ToList());
+            return View(selectedQuizzes.ToList());
+        }
+
+        public async Task<ActionResult> GetQuizzesForStudents()
+        {
+            var allQuizzes = await db.Quizzs.ToListAsync();
+            var selectedQuizzes = new List<Quizz>();
+            int eClassId = Convert.ToInt32(Session["eClassId"]);
+
+            foreach (var item in allQuizzes)
+            {
+                if (item.eclass.ID == eClassId)
+                {
+                    selectedQuizzes.Add(item);
+                }
+            }
+
+
+            return View(selectedQuizzes.ToList());
         }
 
         // GET: Quizzs

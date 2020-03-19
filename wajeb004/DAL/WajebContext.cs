@@ -20,5 +20,9 @@ namespace wajeb004.DAL
 
         public DbSet<Student> Students { get; set; }
 
+        public DbSet<AnswersSnapshot> AnswersSnapshots { get; set; }
+
+        public DbSet<Answer> Answers { get; set; }
+
     }
 }

@@ -1,0 +1,47 @@
+﻿@model wajeb004.Models.AnswersSnapshot
+
+@{
+    ViewBag.Title = "NewSnapShot";
+}
+
+<h2>NewSnapShot</h2>
+
+<div>
+    <h4>AnswersSnapshot</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.status)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.createdOn)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.createdOn)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.lastChangedOn)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.lastChangedOn)
+        </dd>
+    </dl>
+
+</div>
+<hr />
+    Welcome in this quizz. There are @Model.answers.Count() questions in this quizz
+    <a class="btn btn-default" href="@Url.Action("Edit","Answers",new { id = Model.answers.First().ID })">Go to Questions... &raquo;</a>
+
+    <hr />
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>

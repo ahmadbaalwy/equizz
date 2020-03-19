@@ -51,6 +51,22 @@ namespace wajeb004.Controllers
             return View(eClass);
         }
 
+        public async Task<ActionResult> DetailsForStudents (int? id, int? studentId)
+        {
+            Session["eClassId"] = id;
+            Session["studentId"] = studentId;
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            EClass eClass = await db.EClasses.FindAsync(id);
+            if (eClass == null)
+            {
+                return HttpNotFound();
+            }
+            return View(eClass);
+        }
+
         // GET: EClasses/Create
         public ActionResult Create(int courseId)
         {

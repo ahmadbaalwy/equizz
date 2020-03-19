@@ -1,0 +1,42 @@
+﻿@model wajeb004.Models.Answer
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Answer</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TrueOrFalseAnswer)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TrueOrFalseAnswer)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MCQAnswer)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MCQAnswer)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OpenQuestionAnswer)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OpenQuestionAnswer)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

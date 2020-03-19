@@ -10,5 +10,6 @@ namespace wajeb004.Models
         public int ID { get; set; }
         public string QuizzName { get; set; }
         public virtual EClass eclass { get; set; }
+        public virtual ICollection<AnswersSnapshot> answerSnapshots { get; set; }
     }
 }
