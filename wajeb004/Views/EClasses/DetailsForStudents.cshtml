@@ -11,7 +11,7 @@
     <div class="col-md-2" style="padding:2px 2px 2px 2px;">
 
         <ul id="myMenu" class="vertical-menu">
-            <li class="active">@Html.ActionLink("Info","DetailsForStudents","EClasses",new { id = Session["eClassId"] },null)</li>
+            <li class="active">@Html.ActionLink("Info","DetailsForStudents","EClasses",new { id = Session["eClassId"], studentId = Session["studentId"] },null)</li>
             <li>@Html.ActionLink("Quizzes", "GetQuizzesForStudents", "Quizzs")</li>
             <li>link1</li>
             <li>Link2</li>

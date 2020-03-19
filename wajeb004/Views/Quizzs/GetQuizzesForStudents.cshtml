@@ -9,7 +9,7 @@
     <div class="col-md-2" style="padding:2px 2px 2px 2px;">
 
         <ul id="myMenu" class="vertical-menu">
-            <li>@Html.ActionLink("Info", "DetailsForStudents", "EClasses", new { id = Session["eClassId"] }, null)</li>
+            <li>@Html.ActionLink("Info", "DetailsForStudents", "EClasses", new { id = Session["eClassId"], studentId = Session["studentId"] }, null)</li>
             <li class="active">@Html.ActionLink("Quizzes", "GetQuizzesForStudents", "Quizzs")</li>
             <li>link1</li>
             <li>Link2</li>
@@ -35,23 +35,31 @@
                         @Html.DisplayFor(model => item.QuizzName)
                     </td>
                     <td>
-                        @{ bool snapshotExist = false; int snapshotId = 0;}
+                        @{ bool snapshotExist = false; bool snapshotSubmitted = false; int snapshotId = 0;}
                         @foreach (var snap in item.answerSnapshots)
                         {
                             if (snap.student.ID == Convert.ToInt32(Session["studentId"]))
                             {
                                 snapshotExist = true;
                                 snapshotId = snap.ID;
+                                if (snap.status == "Submitted")
+                                {
+                                    snapshotSubmitted = true;
+                                }
                             }
                         }
                         @if (!snapshotExist)
                         {
                             <a class="btn btn-default" href="@Url.Action("NewSnapShot","AnswersSnapshots",new { studentId = Convert.ToInt32(Session["studentId"]), quizzId=item.ID })">Start Quizz &raquo;</a>
                         }
-                        @if (snapshotExist)
+                        @if (snapshotExist && !snapshotSubmitted)
                         {
                             <a class="btn btn-default" href="@Url.Action("ResumeSnapShot","AnswersSnapshots",new { snapshotId = snapshotId})">Resume Quizz &raquo;</a>
 
+                        }
+                        @if (snapshotSubmitted)
+                        {
+                            <p>You have submitted this quizz</p>
                         }
 
                         @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |

@@ -136,7 +136,7 @@ namespace wajeb004.Controllers
             {
                 db.Entry(answer).State = EntityState.Modified;
                 await db.SaveChangesAsync();
-                return RedirectToAction("SubmitAnswers", "AnswersSnapshots", new { id = answer.answersSnapshot.ID });
+                return RedirectToAction("SubmitSnapshot", "AnswersSnapshots", new { answerId = answer.ID });
             }
             return View(answer);
         }

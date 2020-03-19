@@ -55,6 +55,16 @@ namespace wajeb004.Controllers
             AnswersSnapshot answerSnapshot = await db.AnswersSnapshots.FindAsync(snapshotId);
             return View("NewSnapShot", answerSnapshot);
         }
+
+        public async Task<ActionResult> SubmitSnapshot(int? answerId)
+        {
+            Answer answer = await db.Answers.FindAsync(answerId);
+            AnswersSnapshot answersSnapshot = await db.AnswersSnapshots.FindAsync(answer.answersSnapshot.ID);
+            answersSnapshot.status = "Submitted";
+            db.Entry(answersSnapshot).State = EntityState.Modified;
+            await db.SaveChangesAsync();
+            return RedirectToAction("GetQuizzesForStudents", "Quizzs");
+        }
         public async Task<ActionResult> Index()
         {
             return View(await db.AnswersSnapshots.ToListAsync());
